@@ -317,7 +317,7 @@ mydata$Particle.Size<-as.factor(mydata$Particle.Size)
 head(mydata)
 
 ##data summary function to calculate mean and sd source: http://www.sthda.com/english/wiki/ggplot2-error-bars-quick-start-guide-r-software-and-data-visualization
-
+##add sd column to data and takes means for each voltage replicate for each particle size
 library(plyr)
 
 data_summary <- function(data, varname, groupnames){
@@ -356,9 +356,10 @@ theplot2<-ggplot(mydata2, aes(x=Voltage,y=Flow.Rate,group=Particle.Size, color=P
    theme(text=element_text(size=16))
 
 print(theplot2)
+######################PLOT USED#################### with greek symbol in tite
 
 
-
+#########EDA mostly###########################
 ##plot of particle size vs flow rate 
 p1<-ggplot(data, aes(Particle.Size,Flow.Rate))
 p1_plot<-p1+geom_boxplot(aes(fill=factor(Particle.Size)),show.legend=F)+scale_x_discrete(limits=c("5um","10um","15um","20um"))
